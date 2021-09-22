@@ -10,6 +10,7 @@ public class StarGame extends ApplicationAdapter {
     private SpriteBatch batch;
     private Background background;
     private Hero hero;
+    private Asteroid asteroid;
 
     public Hero getHero() {
         return hero;
@@ -17,9 +18,13 @@ public class StarGame extends ApplicationAdapter {
 
     @Override
     public void create() {
+        float dt = Gdx.graphics.getDeltaTime();
+
         batch = new SpriteBatch();
         background = new Background(this);
         hero = new Hero();
+        asteroid = new Asteroid(dt);
+
     }
 
     @Override
@@ -29,12 +34,14 @@ public class StarGame extends ApplicationAdapter {
         ScreenUtils.clear(0, 0.2f, 0.5f, 1);
         batch.begin();
         background.render(batch);
+        asteroid.render(batch);
         hero.render(batch);
         batch.end();
     }
 
     public void update(float dt) {
         background.update(dt);
+        asteroid.update(dt);
         hero.update(dt);
     }
 

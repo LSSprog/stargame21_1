@@ -45,6 +45,17 @@ public class Hero {
             lastDisplacement.set(0, 0);
         }
 
+        // task 2
+        if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+            position.x -= MathUtils.cosDeg(angel) * 120.0f * dt;
+            position.y -= MathUtils.sinDeg(angel) * 120.0f * dt;
+            lastDisplacement.set(MathUtils.cosDeg(angel) * 120.0f * dt,
+                    MathUtils.sinDeg(angel) * 120.0f * dt);
+        } else {
+            lastDisplacement.set(0, 0);
+        }
+
+
         if (position.x < 32f) {
             position.x = 32f;
         }
